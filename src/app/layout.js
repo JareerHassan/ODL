@@ -20,7 +20,7 @@ export default function RootLayout({ children }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
         <link rel="shortcut icon" href="/assets/images/favicon.png" />
-        <link rel="apple-touch-icon" href="/logo192.png" />
+        {/* <link rel="apple-touch-icon" href="/logo192.png" /> */}
         <link rel="manifest" href="/manifest.json" />
 
         {/* External CSS */}
@@ -42,7 +42,7 @@ export default function RootLayout({ children }) {
         {/* External JS */}
         <Script src="/assets/js/jquery-3.6.1.min.js" strategy="beforeInteractive" />
         <Script src="/assets/js/popper.min.js" strategy="beforeInteractive" />
-        <Script src="/assets/js/bootstrap.min.js" strategy="beforeInteractive" />
+        {/* <Script src="/assets/js/bootstrap.min.js" strategy="beforeInteractive" /> */}
         <Script src="/assets/js/magnific-popup.min.js" strategy="afterInteractive" />
         <Script src="/assets/js/waypoints.min.js" strategy="afterInteractive" />
         <Script src="/assets/js/counterup.min.js" strategy="afterInteractive" />
