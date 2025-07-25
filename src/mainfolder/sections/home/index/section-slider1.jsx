@@ -14,15 +14,17 @@ function SectionSlider1() {
     register(); // now inside useEffect so it runs in browser only
   }, []);
 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
+ useEffect(() => {
+    if (typeof window !== "undefined") {
+      const handleResize = () => {
+        setIsMobile(window.innerWidth < 768);
+      };
 
-    handleResize(); // Initial run
-    window.addEventListener("resize", handleResize);
+      handleResize(); // Initial run
+      window.addEventListener("resize", handleResize);
 
-    return () => window.removeEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+    }
   }, []);
 
   useEffect(() => {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useEffect } from "react";
 
 const testimonials = [
   {
@@ -40,7 +40,20 @@ const TestimonialSection = () => {
   };
 
   const current = testimonials[currentIndex];
-  const isMobile = typeof window !== "undefined" && window.innerWidth <= 768;
+   const [isMobile, setIsMobile] = useState(false); // Default safe value
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const checkMobile = () => {
+        setIsMobile(window.innerWidth <= 768);
+      };
+
+      checkMobile(); // Initial check
+      window.addEventListener("resize", checkMobile);
+      return () => window.removeEventListener("resize", checkMobile);
+    }
+  }, []);
+
 
   return (
     <div

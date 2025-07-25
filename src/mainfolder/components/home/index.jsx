@@ -18,9 +18,11 @@ import ServicesNewSection from "../../sections/home/index/ServicesNewSection.jsx
 
 function Home1Page() {
   useEffect(() => {
-    loadScript("js/custom.js");
+    if (typeof window !== "undefined") {
+      loadScript("js/custom.js");
+    }
   }, []);
-
+  
   const Hr = () => (
     <div className="bg-black p-2">
       <hr className="px-5 mx-auto" style={{ height: "2px", backgroundColor: "white", border: "none" }} />

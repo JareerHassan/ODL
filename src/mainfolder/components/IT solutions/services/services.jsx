@@ -1,26 +1,25 @@
+import { useEffect } from "react";
 import Banner from "../../../sections/common/banner";
 import SectionAboutCompany1 from "../../../sections/home/index/section-services-card";
-
-import { bannerData } from "../../../../globals/banner";
-import { useEffect } from "react";
-import { loadScript } from "../../../../globals/constants";
 import SkillsLine from "../../../sections/home/index/section-skill";
 import ServicesNewSection from "../../../sections/home/index/ServicesNewSection";
+import { bannerData } from "../../../../globals/banner";
+import { loadScript } from "../../../../globals/constants";
+
 function ServicesPage() {
   useEffect(() => {
-    loadScript("js/custom.js");
-  });
+    if (typeof window !== "undefined") {
+      loadScript("js/custom.js");
+    }
+  }, []); 
 
   return (
-    <>
     <div className="bg-black"> 
       <Banner _data={bannerData.services} />
       <SectionAboutCompany1 />
       <SkillsLine />
       <ServicesNewSection />
-   
-      </div>
-    </>
+    </div>
   );
 }
 

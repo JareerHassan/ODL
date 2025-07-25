@@ -6,13 +6,17 @@ const SectionAboutCompany1 = () => {
   const [isMobile, setIsMobile] = useState(false);
 
   // Detect screen size
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 576); // Bootstrap sm breakpoint
-    };
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    useEffect(() => {
+    if (typeof window !== "undefined") {
+      const handleResize = () => {
+        setIsMobile(window.innerWidth <= 576); // Bootstrap sm breakpoint
+      };
+
+      handleResize(); // Initial run
+      window.addEventListener("resize", handleResize);
+
+      return () => window.removeEventListener("resize", handleResize);
+    }
   }, []);
 
   const services = [

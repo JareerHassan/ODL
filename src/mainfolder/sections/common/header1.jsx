@@ -20,18 +20,18 @@ const [windowWidth, setWindowWidth] = useState(null); // don't use window direct
   };
 
   const toggleNavClass = () => setIsActive(!isActive);
-
+  
   useEffect(() => {
-  if (typeof window !== "undefined") {
-    setWindowWidth(window.innerWidth);
+    if (typeof window !== 'undefined') {
+      const handleResize = () => {
+        setIsMobile(window.innerWidth <= 768);
+      };
 
-    const handleResize = () => setWindowWidth(window.innerWidth);
-    window.addEventListener("resize", handleResize);
-
-    return () => window.removeEventListener("resize", handleResize);
-  }
-}, []);
-
+      handleResize(); // initial check
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+    }
+  }, []);
 
   const isMobile = windowWidth < 868;
 

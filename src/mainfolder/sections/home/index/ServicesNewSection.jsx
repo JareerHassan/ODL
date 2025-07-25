@@ -1,3 +1,4 @@
+'use client';
 import React, { useState, useEffect } from "react";
 
 const cardsDataTop = [
@@ -47,17 +48,20 @@ const cardsDataBottom = [
 ];
 
 const ServicesNewSection = () => {
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+   const [isMobile, setIsMobile] = useState(false); // Start false to avoid SSR issue
   const [hoveredCardIndex, setHoveredCardIndex] = useState(null);
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+    if (typeof window !== "undefined") {
+      const handleResize = () => {
+        setIsMobile(window.innerWidth <= 768);
+      };
 
+      handleResize(); // Initial check
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+    }
+  }, []);
   const sectionStyle = {
     padding: "40px 20px",
     textAlign: "center",
