@@ -6,34 +6,33 @@ import { loadScript } from "../../../globals/constants";
 import Megamenu from "./Mega-Menu";
 import { FaChevronDown, FaBars } from "react-icons/fa";
 import MobileNav from "./MobileMenu";
-const NavLink = Link;
 
 function Header1() {
   const [isActive, setIsActive] = useState(false);
   const [showMegaMenu, setShowMegaMenu] = useState(false);
-const [windowWidth, setWindowWidth] = useState(null); // don't use window directly
+  const [windowWidth, setWindowWidth] = useState(1024); // default width
   const [isAboutOpen, setIsAboutOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
+
+  const isMobile = windowWidth <= 768;
 
   const toggleMegaMenu = () => {
     setShowMegaMenu(!showMegaMenu);
   };
 
   const toggleNavClass = () => setIsActive(!isActive);
-  
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const handleResize = () => {
-        setIsMobile(window.innerWidth <= 768);
-      };
 
-      handleResize(); // initial check
-      window.addEventListener('resize', handleResize);
-      return () => window.removeEventListener('resize', handleResize);
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    if (typeof window !== "undefined") {
+      handleResize(); // Initial set
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
     }
   }, []);
-
-  const isMobile = windowWidth < 868;
 
   useEffect(() => {
     loadScript("js/mobilenav.js");
