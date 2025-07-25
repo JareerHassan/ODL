@@ -11,7 +11,7 @@ const NavLink = Link;
 function Header1() {
   const [isActive, setIsActive] = useState(false);
   const [showMegaMenu, setShowMegaMenu] = useState(false);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+const [windowWidth, setWindowWidth] = useState(null); // don't use window directly
   const [isAboutOpen, setIsAboutOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
 
@@ -22,10 +22,16 @@ function Header1() {
   const toggleNavClass = () => setIsActive(!isActive);
 
   useEffect(() => {
+  if (typeof window !== "undefined") {
+    setWindowWidth(window.innerWidth);
+
     const handleResize = () => setWindowWidth(window.innerWidth);
     window.addEventListener("resize", handleResize);
+
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  }
+}, []);
+
 
   const isMobile = windowWidth < 868;
 
@@ -65,6 +71,7 @@ function Header1() {
                       src="/assets/images/main-logo.webp"
                       width={100}
                       height={60}
+                      alt="Oxmite Digital Logo"
                     />{" "}
                   </Link>
                 </div>
