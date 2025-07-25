@@ -3,48 +3,43 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Header1 from '@/mainfolder/sections/common/header1';
 import Footer from '@/mainfolder/sections/common/footer';
-import Head from 'next/head';
 import Script from 'next/script';
 import "lightcase/src/css/lightcase.css";
 
-
-
-
 export const metadata = {
   title: 'Oxmite Digital LTD',
+  description: 'Professional business website for digital services',
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        
-        <Head>
-          <meta charSet="utf-8" />
-          <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <link rel="icon" href="/favicon.ico" />
-          <link rel="shortcut icon" href="/assets/images/favicon.png" />
-          <link rel="apple-touch-icon" href="/logo192.png" />
-          <link rel="manifest" href="/manifest.json" />
+        <meta charSet="utf-8" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="shortcut icon" href="/assets/images/favicon.png" />
+        <link rel="apple-touch-icon" href="/logo192.png" />
+        <link rel="manifest" href="/manifest.json" />
 
-          {/* External CSS from public/assets */}
-          <link rel="stylesheet" href="/assets/css/owl.carousel.min.css" />
-          <link rel="stylesheet" href="/assets/css/magnific-popup.min.css" />
-          <link rel="stylesheet" href="/assets/css/loader.min.css" />
-          <link rel="stylesheet" href="/assets/css/flaticon.min.css" />
-          <link rel="stylesheet" href="/assets/css/animate.css" />
-          <link rel="stylesheet" href="/assets/css/feather.css" />
-          <link rel="stylesheet" href="/assets/css/lc_lightbox.css" />
-          <link rel="stylesheet" href="/assets/css/swiper-bundle.min.css" />
-        </Head>
+        {/* External CSS */}
+        <link rel="stylesheet" href="/assets/css/owl.carousel.min.css" />
+        <link rel="stylesheet" href="/assets/css/magnific-popup.min.css" />
+        <link rel="stylesheet" href="/assets/css/loader.min.css" />
+        <link rel="stylesheet" href="/assets/css/flaticon.min.css" />
+        <link rel="stylesheet" href="/assets/css/animate.css" />
+        <link rel="stylesheet" href="/assets/css/feather.css" />
+        <link rel="stylesheet" href="/assets/css/lc_lightbox.css" />
+        <link rel="stylesheet" href="/assets/css/swiper-bundle.min.css" />
       </head>
+
       <body>
         <Header1 />
         {children}
         <Footer />
 
-        {/* External JS files from public/assets */}
+        {/* External JS */}
         <Script src="/assets/js/jquery-3.6.1.min.js" strategy="beforeInteractive" />
         <Script src="/assets/js/popper.min.js" strategy="beforeInteractive" />
         <Script src="/assets/js/bootstrap.min.js" strategy="beforeInteractive" />
