@@ -14,7 +14,7 @@ function Header1() {
   const [isAboutOpen, setIsAboutOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
 
-  const isMobile = windowWidth <= 768;
+  const isMobile = windowWidth <= 840;
 
   const toggleMegaMenu = () => {
     setShowMegaMenu(!showMegaMenu);
