@@ -7,44 +7,44 @@ const SectionServices1 = () => {
 
   const services = [
     {
-      href: "/service/custom-software",
+      href: "/services/custom-software",
       img: "assets/images/services-1.webp",
       title: "Custom Software & Business Solutions",
     },
     {
-      href: "service/web-development",
+      href: "services/web-development",
       img: "assets/images/services-2.webp",
       title: "Web & Digital Products Development",
     },
     {
-      href: "/service/app-development",
+      href: "/services/app-development",
       img: "assets/images/services-3.webp",
       title: "Mobile App Development",
     },
     {
-      href: "/service/e-commerce-solutions",
+      href: "/services/e-commerce-solutions",
       img: "assets/images/services-4.webp",
       title: "E-commerce Web & Mobile Solutions",
     },
     ...(expanded
       ? [
           {
-            href: "/service/digital-marketing",
+            href: "/services/digital-marketing",
             img: "assets/images/services-5.webp",
             title: "Digital Marketing & SEO Services",
           },
           {
-            href: "/service/quality-testing",
+            href: "/services/quality-testing",
             img: "assets/images/services-6.webp",
             title: "Quality Assurance (QA) & Testing",
           },
           {
-            href: "/service/digital-consulting",
+            href: "/services/digital-consulting",
             img: "assets/images/services-7.webp",
             title: "Digital Transformation & Consulting",
           },
           {
-            href: "/service/ai-bots-business-automations",
+            href: "/services/ai-bots-business-automations",
             img: "assets/images/services-8.webp",
             title: "AI Bots & Business Automations",
           },
@@ -64,7 +64,7 @@ const SectionServices1 = () => {
         </h2>
       </div>
 
-      <div className="services-section-grid ms-3 gap-4">
+      <div className="services-section-grid ms-1 gap-4">
         {services.map((card, index) => (
           <div className="services-section-card" key={index}>
             <a href={card.href}>

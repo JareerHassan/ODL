@@ -1,64 +1,45 @@
 "use client";
 
-import React, { useRef, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { register } from "swiper/element/bundle";
-import { FaCaretLeft, FaCaretRight, FaCheck } from "react-icons/fa";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Navigation, Pagination, EffectFade } from "swiper/modules";
+import { FaCheck } from "react-icons/fa";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/effect-fade";
 
-function SectionSlider1() {
-  const swiperRef = useRef(null);
+
+
+export default function SectionSlider1() {
   const [showContent, setShowContent] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    register(); // now inside useEffect so it runs in browser only
-  }, []);
-
- useEffect(() => {
-    if (typeof window !== "undefined") {
-      const handleResize = () => {
-        setIsMobile(window.innerWidth < 768);
-      };
-
-      handleResize(); // Initial run
-      window.addEventListener("resize", handleResize);
-
-      return () => window.removeEventListener("resize", handleResize);
-    }
-  }, []);
-
-  useEffect(() => {
-    if (swiperRef.current) {
-      const swiperEl = swiperRef.current;
-
-      const handleStart = () => setShowContent(false);
-      const handleEnd = () => setShowContent(true);
-
-      swiperEl.addEventListener("slidechangetransitionstart", handleStart);
-      swiperEl.addEventListener("slidechangetransitionend", handleEnd);
-
-      return () => {
-        swiperEl.removeEventListener("slidechangetransitionstart", handleStart);
-        swiperEl.removeEventListener("slidechangetransitionend", handleEnd);
-      };
-    }
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return (
     <div className="sx-bnr-1-wrap-outer home-1-slider position-relative overflow-hidden">
-      <swiper-container
-        ref={swiperRef}
-        loop="true"
-        space-between="30"
+      <Swiper
+        modules={[Autoplay, Navigation, Pagination, EffectFade]}
+        slidesPerView={1}
+        loop={true}
         effect="fade"
-        navigation="true"
-        pagination="true"
-        autoplay-delay="7000"
-        autoplay-disable-on-interaction="true"
-        class="swiper-wrapper position-relative "
+        autoplay={{ delay: 7000, disableOnInteraction: true }}
+        pagination={{ clickable: true }}
+        navigation
+        spaceBetween={20}
+        onSlideChangeTransitionStart={() => setShowContent(false)}
+        onSlideChangeTransitionEnd={() => setShowContent(true)}
+        className="position-relative"
       >
         {/* Slide 1 */}
-        <swiper-slide class="sx-bnr-1-wrap swiper-slide overlay-overlay dark-overlay position-relative">
+        <SwiperSlide className="sx-bnr-1-wrap overlay-overlay dark-overlay position-relative">
           <video
             autoPlay
             muted
@@ -117,10 +98,10 @@ function SectionSlider1() {
               </div>
             )}
           </div>
-        </swiper-slide>
+        </SwiperSlide>
 
         {/* Slide 2 */}
-        <swiper-slide class="sx-bnr-1-wrap swiper-slide overlay-overlay dark-overlay position-relative">
+        <SwiperSlide className="sx-bnr-1-wrap overlay-overlay dark-overlay position-relative">
           <video
             autoPlay
             muted
@@ -179,10 +160,10 @@ function SectionSlider1() {
               </div>
             )}
           </div>
-        </swiper-slide>
+        </SwiperSlide>
 
         {/* Slide 3 */}
-        <swiper-slide class="sx-bnr-1-wrap swiper-slide overlay-overlay dark-overlay position-relative">
+        <SwiperSlide className="sx-bnr-1-wrap overlay-overlay dark-overlay position-relative">
           <video
             autoPlay
             muted
@@ -241,10 +222,8 @@ function SectionSlider1() {
               </div>
             )}
           </div>
-        </swiper-slide>
-      </swiper-container>
+        </SwiperSlide>
+      </Swiper>
     </div>
   );
 }
-
-export default SectionSlider1;
